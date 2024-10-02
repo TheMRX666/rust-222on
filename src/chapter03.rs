@@ -58,10 +58,10 @@ fn test35() {
 fn test36() {
     let mut x: i32 = 1;
     x = 7;
-    let x = x;
+    let _x = x;
 
-    let y = 4;
-    let y = "I can also be bound to text!";
+    let _y = 4;
+    let _y = "I can also be bound to text!";
 
     println!("Success!");
 }
@@ -69,4 +69,26 @@ fn test36() {
 #[test]
 fn test37() {
     let _x = 1;
+}
+
+#[test]
+fn test38() {
+    let (mut x, y) = (1, 2);
+    x += 2;
+
+    assert_eq!(x, 3);
+    assert_eq!(y, 2);
+
+    println!("Success!");
+}
+
+#[test]
+fn test39() {
+    let (x, y);
+    (x, ..) = (3, 4);
+    [.., y] = [1, 2];
+
+    assert_eq!([x, y], [3, 2]);
+
+    println!("Success!");
 }
